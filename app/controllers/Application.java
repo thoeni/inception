@@ -1,5 +1,7 @@
 package controllers;
 
+import org.springframework.stereotype.Controller;
+
 import models.User;
 import play.data.Form;
 import play.libs.Json;
@@ -9,7 +11,7 @@ import views.html.index;
 
 import javax.inject.Inject;
 
-@org.springframework.stereotype.Controller
+@Controller
 public class Application {
 
     @Inject
