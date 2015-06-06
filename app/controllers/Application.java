@@ -1,19 +1,19 @@
 package controllers;
 
-
 import models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import play.data.Form;
 import play.libs.Json;
 import play.mvc.Result;
 import services.UserService;
 import views.html.index;
 
+import javax.inject.Inject;
+
 @org.springframework.stereotype.Controller
 public class Application {
 
-    @Autowired
-    private UserService userService;
+    @Inject
+    public UserService userService;
 
     public Result index() {
         return play.mvc.Controller.ok(index.render(Form.form(User.class)));

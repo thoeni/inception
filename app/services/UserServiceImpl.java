@@ -1,11 +1,14 @@
 package services;
 
 
+import com.google.inject.Inject;
 import models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.guice.annotation.EnableGuiceModules;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +17,16 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    public JdbcTemplate jdbcTemplate;
+
+    public UserServiceImpl() {
+        System.out.println("UserServiceImpl created!");
+    }
+
+    @PostConstruct
+    public void checkJdbcTemplate() {
+        System.out.println("JDBCTemplate is: "+(jdbcTemplate != null ? "not " : "")+"null!");
+    }
 
     @Override
     public void addUser(User user) {
